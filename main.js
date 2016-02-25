@@ -37,6 +37,9 @@ function init(){
       selfRef = playersRef.push("player" +playerNum);
       selfRefKey = selfRef.path.o[1];
       playersRef.child(selfRefKey).onDisconnect().remove();
+      setTimeoout(function(){
+        playersRef.child(selfRefKey).remove();
+      }, 1800000)
     }
     else alert("Too many players");
   }
